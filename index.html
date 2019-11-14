@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Trello clone</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans:400,700&display=swap&subset=cyrillic-ext" rel="stylesheet">
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="columns">
+                <div class="column" draggable="true" data-column-id="1">
+                    <p class="column-header" contenteditable="true">В плане</p>
+                    <div data-notes>
+                        <div class="note" draggable="true" data-note-id="1">Тут какая-та задача о чем-то интересном.</div>
+                        <div class="note" draggable="true" data-note-id="2">А это задача о чем-то не интересном.</div>
+                        <div class="note" draggable="true" data-note-id="3">Купить собачий корм.</div>
+                    </div>
+                    <p class="column-footer">
+                        <span data-action-addNote class="action">+ Добавить карточку</span>
+                    </p>
+                </div>
+
+                <div class="column" draggable="true" data-column-id="2">
+                    <p class="column-header" contenteditable="true">В плане</p>
+                    <div data-notes>
+                        <div class="note" draggable="true" data-note-id="4">Тут какая-та задача о чем-то интересном.</div>
+                        <div class="note" draggable="true" data-note-id="5">А это задача о чем-то не интересном.</div>
+                        <div class="note" draggable="true" data-note-id="6">Купить собачий корм.</div>
+                        <div class="note" draggable="true" data-note-id="7">Купить собачий корм.</div>
+                    </div>
+                    <p class="column-footer">
+                        <span data-action-addNote class="action">+ Добавить карточку</span>
+                    </p>
+                </div>
+
+                <div class="column" draggable="true" data-column-id="3">
+                    <p class="column-header" contenteditable="true">В плане</p>
+                    <div data-notes></div>
+                    <p class="column-footer">
+                        <span data-action-addNote class="action">+ Добавить карточку</span>
+                    </p>
+                </div>
+            </div>
+
+            <div class="adder">
+                <span data-action-addColumn class="action">+ Добавить колонку</span>
+            </div>
+        </div>
+    </div>
+
+    <script src="column.js"></script>
+    <script src="note.js"></script>
+    <script src="row.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
