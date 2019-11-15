@@ -48,11 +48,13 @@ function columnProcess(columnElement) {
     // Редактирование заголовков карточек
     const headerElement = columnElement.querySelector('.column-header');
     headerElement.addEventListener('dblclick', function(event) {
-    headerElement.setAttribute('contenteditable', 'true');
-    headerElement.focus();
+        headerElement.setAttribute('contenteditable', 'true');
+        headerElement.closest('.column').removeAttribute('draggable');
+        headerElement.focus();
     });
     headerElement.addEventListener('blur', function(event) {
         headerElement.removeAttribute('contenteditable');
+        headerElement.closest('.column').setAttribute('draggable', 'true');
         if (!headerElement.textContent.trim().length) {
             headerElement.textContent = 'Новая колонка';
         }
