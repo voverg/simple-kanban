@@ -1,5 +1,10 @@
-body {
+* {
     margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
     /* background-image: url('https://source.unsplash.com/random'); */
     /* background-image: url('https://source.unsplash.com/featured?island'); */
     /*background-image: url('https://source.unsplash.com/1600x900/?background');*/
@@ -7,10 +12,6 @@ body {
     background-size: contain;
     background-position: center;
     font-family: 'Noto Sans', sans-serif;
-}
-
-* {
-    box-sizing: border-box;
 }
 
 .container {
@@ -31,7 +32,8 @@ body {
 
 .column, .adder {
     margin: 10px;
-    width: 240px;
+    /*width: 240px;*/
+    width: 200px;
     border-radius: 4px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
