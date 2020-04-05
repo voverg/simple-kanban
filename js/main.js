@@ -4,11 +4,11 @@ const columnElemList = document.querySelectorAll('.column');
 const newColumnElem = document.querySelector('[data-action-addColumn]');
 
 // Varables
-let noteIdCounter = 8; // Get amount existing of cards
-let columnIdCounter = 4; // Get amount existing of columns
+let columnIdCounter = 4;
+let noteIdCounter = 8;
 
 // Add new cards to the colomn and edit column and cards
-function columnProcess(columnElement) {
+function createCard(columnElement) {
     const spanAction_addNote = columnElement.querySelector('[data-action-addNote]');
     spanAction_addNote.addEventListener('click', function () {
         const dataNotes = columnElement.querySelector('[data-notes]');
@@ -20,15 +20,15 @@ function columnProcess(columnElement) {
         dataNotes.lastElementChild.focus();
         noteIdCounter++; 
         // Add text to the new card
-        noteProcess(dataNotes.lastElementChild);
+        createNote(dataNotes.lastElementChild);
     });
     // Edit the title of the column
     const headerElement = columnElement.querySelector('.column-header');
-    noteProcess(headerElement);
+    createNote(headerElement);
 }
 // Edit cards
-function noteProcess(noteElement) {
-    noteElement.addEventListener('dblclick', function () {
+function createNote(noteElement) {
+    noteElement.addEventListener('click', function () {
         noteElement.setAttribute('contenteditable', 'true');
         noteElement.removeAttribute('draggable');
         noteElement.closest('.column').removeAttribute('draggable');
@@ -61,7 +61,7 @@ function noteProcess(noteElement) {
 
 
 // Create a new card
-columnElemList.forEach(columnProcess);
+columnElemList.forEach(createCard);
 
 // Create a new column
 newColumnElem.addEventListener('click', function() {
@@ -77,9 +77,9 @@ newColumnElem.addEventListener('click', function() {
     columnsElem.insertAdjacentHTML('beforeend', columnElement);
     columnIdCounter++;
     // Add the new card to the new column
-    columnProcess(columnsElem.lastElementChild);
+    createCard(columnsElem.lastElementChild);
 });
 
 // Edit existing cards
 const noteElemList = document.querySelectorAll('.note');
-noteElemList.forEach(noteProcess);
+noteElemList.forEach(createNote);

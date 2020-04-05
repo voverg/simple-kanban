@@ -31,6 +31,7 @@ body {
 }
 
 .column, .adder {
+    flex-shrink: 0;
     margin: 10px;
     /*width: 240px;*/
     width: 200px;
@@ -148,4 +149,16 @@ footer p a {
 }
 footer p a:hover {
     color: #fff;
+}
+
+
+/*Responsive*/
+@media (max-width: 720px) {
+    .container {
+        overflow: auto;
+    }
+
+    .column, .adder {
+        width: 300px;
+    }
 }
