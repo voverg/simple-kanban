@@ -40,6 +40,7 @@ body {
 }
 
 .column {
+    position: relative;
     background: #f1f1f1;
     padding: 10px 15px;
 }
@@ -81,6 +82,7 @@ body {
 }
 
 .note {
+    position: relative;
     cursor: default;
     width: 100%;
     background: white;
@@ -130,6 +132,25 @@ body {
 
 .note.under {
     opacity: 0.5;
+}
+
+.close {
+    position: absolute;
+    top: -7px;
+    right: -7px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20px;
+    height: 20px;
+    background-color: rgba(200, 200, 200, 0.5);
+    border-radius: 50%;
+    color: #777;
+}
+.close:hover {
+    color: #f1f1f1;
+    background-color: #555;
+    cursor: pointer;
 }
 
 /*Footer*/

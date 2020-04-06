@@ -7,27 +7,51 @@ const newColumnElem = document.querySelector('[data-action-addColumn]');
 let columnIdCounter = 4;
 let noteIdCounter = 8;
 
-// Add new cards to the colomn and edit column and cards
+// Create a new column
+function createColumn() {
+    const columnElement = `
+                        <div class="column" data-column-id="${columnIdCounter}" draggable="true">
+                            <p class="column-header" tabindex="-1" contenteditable="true"></p>
+                            <span class="close">x</span>
+                            <div data-notes></div>
+                            <p class="column-footer">
+                                 <span data-action-addNote class="action">+ Добавить карточку</span>
+                            </p>
+                        </div>
+                        `;
+    columnsElem.insertAdjacentHTML('beforeend', columnElement);
+    columnIdCounter++;
+    // Edit title of the column
+    const columnHeaderElem = columnsElem.lastElementChild.querySelector('.column-header');
+    columnHeaderElem.focus();
+    editNote(columnHeaderElem);
+    // Add the new card to the new column
+    createCard(columnsElem.lastElementChild);
+    // Delete the column
+    const closeButton = columnsElem.lastElementChild.querySelector('.close');
+    closeButton.addEventListener('click', () => {
+        removeElem(columnsElem.lastElementChild);
+    })
+}
+
+// Create a new card
 function createCard(columnElement) {
-    const spanAction_addNote = columnElement.querySelector('[data-action-addNote]');
-    spanAction_addNote.addEventListener('click', function () {
-        const dataNotes = columnElement.querySelector('[data-notes]');
-        // Create a new note
+    const newCard = columnElement.querySelector('[data-action-addNote]');
+    newCard.addEventListener('click', function () {
+        const dataNotes = columnElement.querySelector('[data-notes]'); // Card container
         const noteElement = `
                             <div class="note" data-note-id="${noteIdCounter}" draggable="true" contenteditable="true"></div>
                             `;
         dataNotes.insertAdjacentHTML('beforeend', noteElement);
         dataNotes.lastElementChild.focus();
         noteIdCounter++; 
-        // Add text to the new card
-        createNote(dataNotes.lastElementChild);
+        // Edit text to the new card
+        editNote(dataNotes.lastElementChild);
     });
-    // Edit the title of the column
-    const headerElement = columnElement.querySelector('.column-header');
-    createNote(headerElement);
 }
-// Edit cards
-function createNote(noteElement) {
+
+// Edit card or column note
+function editNote(noteElement) {
     noteElement.addEventListener('click', function () {
         noteElement.setAttribute('contenteditable', 'true');
         noteElement.removeAttribute('draggable');
@@ -39,9 +63,10 @@ function createNote(noteElement) {
     });
 
     noteElement.addEventListener('blur', unfocusElem);
-    noteElement.addEventListener('keyup', function (event) {
-        if (event.ctrlKey && (event.keyCode === 13)) {
-            unfocusElem();
+    noteElement.addEventListener('keydown', function (event) {
+        if (event.keyCode === 13) {
+            event.preventDefault();
+            noteElement.blur();
         }
     })
 
@@ -59,27 +84,31 @@ function createNote(noteElement) {
     }
 }
 
+// Delete column
+function removeElem(elem) {
+    const headerText = elem.querySelector('.column-header').textContent;
+    const res = confirm(`Точно хочешь удалить колонку ${headerText.toUpperCase()}?`);
+    if (res) {
+        elem.remove();
+    }
+}
 
-// Create a new card
+
+// Add a new card to existing columns in the start
 columnElemList.forEach(createCard);
-
-// Create a new column
-newColumnElem.addEventListener('click', function() {
-    const columnElement = `
-                        <div class="column" data-column-id="${columnIdCounter}" draggable="true">
-                            <p class="column-header">Новая колонка</p>
-                            <div data-notes></div>
-                            <p class="column-footer">
-                                 <span data-action-addNote class="action">+ Добавить карточку</span>
-                            </p>
-                        </div>
-                        `;
-    columnsElem.insertAdjacentHTML('beforeend', columnElement);
-    columnIdCounter++;
-    // Add the new card to the new column
-    createCard(columnsElem.lastElementChild);
+// Delete existing columns
+columnElemList.forEach(elem => {
+    const closeBtn = elem.querySelector('.close');
+    closeBtn.addEventListener('click', () => {
+        removeElem(elem);
+    });
 });
+// Create a new column
+newColumnElem.addEventListener('click', createColumn);
 
-// Edit existing cards
+
+
+// ----------------------Delete when the app will be ready ----------------------------------------
+// Edit existing cards in the start
 const noteElemList = document.querySelectorAll('.note');
-noteElemList.forEach(createNote);
+noteElemList.forEach(editNote);
