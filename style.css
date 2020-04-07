@@ -72,6 +72,7 @@ body {
     color: rgb(82, 106, 122);
     margin: 0;
     margin-bottom: 10px;
+    cursor: pointer;
 }
 
 .column-footer span {
@@ -145,6 +146,8 @@ body {
     height: 20px;
     background-color: rgba(200, 200, 200, 0.5);
     border-radius: 50%;
+    font-size: 20px;
+    line-height: 100%;
     color: #777;
 }
 .close:hover {
