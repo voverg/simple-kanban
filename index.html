@@ -1,72 +1,41 @@
 <!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <meta name="description" content="Это простой аналог kanban таск-менеджера, созданный на html, css и чистом javacript">
-    <meta name="keywords" content="kanban, таск-менеджер">
-    <!-- <meta name="og:image" content="kanban-logo.jpg"> -->
-    <title>Simple kanban</title>
-    <link rel="shortcut icon" href="img/favicon.png" type="image/x-icon">
-    <link href="style.css" rel="stylesheet" type="text/css" />
-    <link href="https://fonts.googleapis.com/css?family=Noto+Sans:400,700&display=swap&subset=cyrillic-ext" rel="stylesheet">
-</head>
-<body>
-    <div class="container">
-        <div class="row">
-            <div class="columns">
-                <div class="column" draggable="true" data-column-id="1">
-                    <p class="column-header">Сделать</p>
-                    <span class="close">&times;</span>
-                    <div data-notes>
-                        <div class="note" draggable="true" data-note-id="1">Тут какая-та задача о чем-то интересном.
-                        </div>
-                        <div class="note" draggable="true" data-note-id="2">А это задача о чем-то не интересном.</div>
-                        <div class="note" draggable="true" data-note-id="3">Купить собачий корм.</div>
-                    </div>
-                    <p class="column-footer">
-                        <span data-action-addNote class="action">+ Добавить карточку</span>
-                    </p>
-                </div>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="This is a simple kanban app. Created by html, css and pure javascript.">
+    <meta name="keywords" content="html, css, javascript">
+    <meta name="og:image" content="./img/kanban-social.png">
+    <link rel="shortcut icon" href="./img/kanban-icon-2.png" type="image/x-icon">
+    <link rel="stylesheet" href="./css/style.css" />
+    <title>Kanban</title>
+  </head>
+  <body data-trash="true">
+    <div data-trash="true">
+      <div class="row">
+          <div class="col-header start">Начать</div>
+          <div class="col-header progress">В процессе</div>
+          <div class="col-header done">Готово</div>
+      </div>
 
-                <div class="column" draggable="true" data-column-id="2">
-                    <p class="column-header">Делаю</p>
-                    <span class="close">&times;</span>
-                    <div data-notes>
-                        <div class="note" draggable="true" data-note-id="4">Тут какая-та задача о чем-то интересном.
-                        </div>
-                        <div class="note" draggable="true" data-note-id="5">А это задача о чем-то не интересном.</div>
-                        <div class="note" draggable="true" data-note-id="6">Купить собачий корм.</div>
-                        <div class="note" draggable="true" data-note-id="7">Купить собачий корм.</div>
-                    </div>
-                    <p class="column-footer">
-                        <span data-action-addNote class="action">+ Добавить карточку</span>
-                    </p>
-                </div>
+      <div class="row" id="placeholder-list">
+        <div class="placeholder" data-id="0"></div>
+        <div class="placeholder" data-id="1"></div>
+        <div class="placeholder" data-id="2"></div>
+      </div>
 
-                <div class="column" draggable="true" data-column-id="3">
-                    <p class="column-header">Готово</p>
-                    <span class="close">&times;</span>
-                    <div data-notes></div>
-                    <p class="column-footer">
-                        <span data-action-addNote class="action">+ Добавить карточку</span>
-                    </p>
-                </div>
-            </div>
+      <div class="row" id="add-btn-list">
+        <div class="add-card" data-id="0">+ Add note</div>
+        <div class="add-card" data-id="1">+ Add note</div>
+        <div class="add-card" data-id="2">+ Add note</div>
+      </div>
 
-            <div class="adder">
-                <span data-action-addColumn class="action">+ Добавить колонку</span>
-            </div>
-        </div>
     </div>
 
-    <footer>
-        <p>Created 2019 by <a href="https://github.com/voverg" target="_blank">Voverg</a></p>
+    <footer class="footer">
+        <p>Created by <a href="https://github.com/voverg" target="_blank">Voverg</a></p>
     </footer>
 
-<!--     <script src="column.js"></script>
-    <script src="note.js"></script>
-    <script src="row.js"></script> -->
-    <script src="js/main.js"></script>
-</body>
+    <script src="./js/app.js"></script>
+  </body>
 </html>

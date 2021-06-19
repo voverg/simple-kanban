@@ -1,0 +1,147 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+
+:root {
+  --col-width: 180px;
+  --card-width: 160px;
+  --hover-color: rgba(0, 204, 202);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 100vh;
+  font-family: 'Roboto', sans-serif;
+  background-color: #e5e5e5;
+  padding-top: 3rem;
+  margin: 0;
+}
+
+.row {
+  display: flex;
+  width: 600px;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.col-header {
+  width: var(--col-width);
+  box-shadow: 4px 4px 9px rgba(198, 198, 198, 0.36);
+  border-radius: 10px;
+  padding: 0.8rem 1rem;
+  color: #fff;
+  user-select: none;
+}
+
+
+.placeholder {
+  width: var(--col-width);
+  min-height: 50px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 10px 0 0 0;
+}
+
+.card {
+  margin: 0 auto;
+  width: var(--card-width);
+  min-height: 50px;
+  border: 1px solid #eee;
+  border-radius: 10px;
+  box-shadow: 4px 4px 9px rgba(198, 198, 198, 0.36);
+  background: #f7f6f7;
+  margin-bottom: 10px;
+  padding: 0.8rem 0.6rem;
+  color: #828282;
+  text-align: center;
+  cursor: pointer;
+  user-select: none;
+}
+
+.card:active {
+  cursor: grabbing;
+}
+
+.card:focus {
+  outline: none;
+  border-color: #999;
+}
+
+.add-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: var(--col-width);
+  height: 50px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  font-size: 16px;
+  color: #999;
+  cursor: pointer;
+  user-select: none;
+  transition: 0.3s ease-in-out;
+}
+
+.add-card:hover {
+  background-color: #eee;
+  color: var(--hover-color);
+}
+.add-card:active {
+  border-width: 2px;
+}
+
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  background-color: #ccc;
+  color: #fff;
+}
+
+footer p a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: bold;
+  letter-spacing: 0.3rem;
+  transition: color 0.2s ease-in;
+}
+footer p a:hover {
+  color: var(--hover-color);
+}
+
+/*-------------- Вспомогательные классы ----------*/
+.start {
+  background: linear-gradient(90deg, #ff85e4 0%, #229efd 179.25%);
+}
+
+.progress {
+  background: linear-gradient(90deg, #209cff 0%, #68e0cf 100%);
+}
+
+.done {
+  background: linear-gradient(90deg, #84fab0 0%, #8fd3f4 100%);
+}
+
+
+.hold {
+  opacity: 0.7;
+}
+
+.hide {
+  /*visibility: hidden;*/
+  opacity: .3;
+}
+
+.hovered {
+  box-shadow: 0 0 2px var(--hover-color);
+}
+
+.offset {
+  margin-top: 50px;
+}
