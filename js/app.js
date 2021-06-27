@@ -226,7 +226,6 @@ function stopEditCard(event) {
   card.removeAttribute('contenteditable');
 
   const cardData = getCardData(card);
-
   setCard(cardData, edit = true);
 }
 

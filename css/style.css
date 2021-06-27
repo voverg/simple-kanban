@@ -1,8 +1,8 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
 
 :root {
-  --col-width: 180px;
-  --card-width: 160px;
+  --col-width: 250px;
+  --card-width: calc(var(--col-width) - 20px);
   --hover-color: rgba(0, 204, 202);
 }
 
@@ -22,11 +22,21 @@ body {
   margin: 0;
 }
 
+.container {
+  flex-grow: 1;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
 .row {
   display: flex;
-  width: 600px;
-  justify-content: space-between;
   margin-bottom: 1rem;
+}
+
+.col-header, .placeholder, .add-card {
+  margin-right: 20px;
 }
 
 .col-header {
@@ -38,13 +48,16 @@ body {
   user-select: none;
 }
 
+#placeholder-list {
+  flex-grow: 1;
+}
 
 .placeholder {
   width: var(--col-width);
-  min-height: 50px;
   border: 1px solid #ccc;
   border-radius: 10px;
   padding: 10px 0 0 0;
+  overflow-y: auto;
 }
 
 .card {
